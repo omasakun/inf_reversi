@@ -1,6 +1,7 @@
-function isChrome() {
-	return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-}
+import { UI } from "./ui";
+import { onLoad, isChrome } from "./util";
+import { DrawableReversiBoard } from "./reversi";
+
 function showConsoleBanner() {
 	if (isChrome()) {
 		console.log(
@@ -30,4 +31,13 @@ function showConsoleBanner() {
 	}
 }
 
+
+//#endregion
+
 showConsoleBanner();
+onLoad(() => {
+	const ui = new UI();
+	console.log(ui);
+	ui.showMenu();
+});
+let board = new DrawableReversiBoard();

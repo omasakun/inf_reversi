@@ -18,3 +18,5 @@ git config alias.sqm "merge --squash"
 - [ ] Github Pages を有効化する
 
 ## NOTES
+- 手詰まりで勝つパターン
+- ui.ts は、 pref を持っている。

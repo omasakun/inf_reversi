@@ -12,32 +12,59 @@ html(lang="ja")
 		link.defer-css(href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet")
 		script(defer src="./bundle.js")
 	body
-		#container
+		#container.hide
 			#info
+				//- prefix: i-
 				h1 Infinite Reversi (WIP)
 				:markdown-it
 					Infinite Reversi is a reversi game with infinite board size.
 
 					This game is still **work-in-progress**.
+				button#i-play Play
+				button#i-start_online Start online session
+				button#i-join_online Join online session
 				hr
 				a(href="https://github.com/omasakun/inf_reversi") GitHub(main)
 				a(href="https://gitlab.com/omasakun/inf_reversi") GitLab
-				
-			#checker
-				h2 CSS Style Checker
-				h3 Header 3
-				input(type="text", placeholder="input box")
-				button Button1
-				button.seamless Button2
+			
+			#config
+				//- prefix: c
+				h2 Config
+				h3 Turn count
+				input#c-size_in(type="number")
+				p#c-size_out
 				hr
-				ul.selectable.listV
-					li This
-					li is 
-					li a
-					li selectable
-					li list
-					li.selected (selected item)
-					li item
-				hr.full
-				a Dummy link
+				button#c-start Start
+			//-
+				#checker
+					h2 CSS Style Checker
+					h3 Header 3
+					input(type="text", placeholder="input box")
+					button Button1
+					button.seamless Button2
+					hr
+					ul.selectable.listV
+						li This
+						li is 
+						li a
+						li selectable
+						li list
+						li.selected (selected item)
+						li item
+					hr.full
+					a Dummy link
+		#game.cH.fullW.fullH.hide
+			#main.grow.shrink.cV
+				p#g-message
+				div
+					button#g-zoom_in Zoom in
+					button#g-zoom_out Zoom out
+					button#g-put Put
+				div#g-canvas_parent.grow.shrink
+					canvas#g-canvas
+			#side.cV
+				#side-top.grow.shrink.scrollY
+					ul.listV#g-log
+				#side-bottom.scrollX
+					span#g-short_message
 		//- script Array.from(document.querySelectorAll("link.defer-css")).forEach(e => e.rel = "stylesheet")
