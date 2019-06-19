@@ -72,10 +72,11 @@ code, kbd, samp, pre
 	&.hide
 		display: none
 
-// Styles for "CSS Style Checker" page.
+// Styles for #container
 #container
-	div
-		margin: 2em auto 5em
+	padding-top: 2em
+	&>div
+		margin: 0 auto 5em
 		padding: 1em
 		box-shadow: $soft-shadow
 		hr
@@ -87,8 +88,24 @@ code, kbd, samp, pre
 			opacity: 1
 	input
 		max-width: 10em
+		width: 100%
 	code
 		white-space: pre-wrap
 
-#info, #checker
+#info, #config, #checker
 	max-width: 30em
+
+input#c-size_in
+	margin: 0 1em 0 0
+	padding-right: 0
+
+// Styles for #game
+#main
+	padding: 1em
+#side
+	width: 15em
+	border-left: 2px dotted $grey
+#side-top
+	padding: 0 1em
+#side-bottom
+	padding: 1em
