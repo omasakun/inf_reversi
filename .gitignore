@@ -1,0 +1,10 @@
+# Temporal files
+/tmp-*/
+/.sass-cache/
+
+# Auto generated files
+/node_modules/
+/docs/
+
+# Private files
+/private*/
