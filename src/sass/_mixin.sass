@@ -1,0 +1,60 @@
+// naming convention: e-[name]
+
+@mixin e-link
+	@include ee-link
+	color: inherit
+	&::before, &::after
+		background: $bg2
+	&:active
+		color: $fg2
+
+@mixin e-input
+	@include ee-input
+	background-color: inherit
+	border-bottom-color: $fg
+	&:hover
+		background-color: $grey
+	&::placeholder
+		color: transparentize($fg, 0.4)
+	&::selection
+		background-color: transparentize($bg2, 0.1)
+		color: $fg2
+
+@mixin e-seamless-button
+	@include ee-outline-button
+	background-color: inherit
+	color: $fg
+	border-radius: 0px
+	border-color: transparent
+	&:hover
+		background-color: $bg2
+		border-color: $bg2
+		color: $fg2
+	&:active
+		color: transparent
+
+@mixin e-outline-button
+	@include ee-outline-button
+	background-color: inherit
+	color: $fg
+	border-radius: 0px
+	border-color: $fg
+	&:hover
+		background-color: $bg2
+		border-color: $bg2
+		color: $fg2
+	&:active
+		color: transparent
+
+@mixin e-dotted-hr
+	@include ee-dotted-hr
+	border-color: $grey
+	opacity: 0.6
+
+@mixin e-selectable-li
+	@include ee-selectable-li
+	&.selected
+		background-color: $bg2
+		color: $fg2
+	&:active
+		color: transparent

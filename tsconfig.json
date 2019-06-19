@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "es6",
+		"target": "esnext",
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"outDir": "tmp-js",
+		"rootDir": "src/ts",
+		"strictNullChecks": true,
+		"alwaysStrict": true,
+		"strictBindCallApply": true,
+		// "strictFunctionTypes": true,
+		"experimentalDecorators": true,
+		"inlineSourceMap": true,
+		"strictPropertyInitialization": true
+	}
+}

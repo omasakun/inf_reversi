@@ -1,0 +1,78 @@
+/*
+	Classes defined in this file...
+		fullH fullW
+		cV cH grow shrink
+		scrollX scrollY
+		listV listH hide stock
+		cSpace cCenter
+		center left right framed framed-block
+
+.fullH
+	height: 100% !important
+.fullW
+	width: 100% !important
+
+.cV
+	display: flex
+	flex-direction: column
+.cH
+	display: flex
+	flex-direction: row
+.cV > *, .cH > *
+	flex-shrink: 0
+
+.grow
+	flex-grow: 1
+.shrink
+	flex-shrink: 1
+.cWrap
+	flex-wrap: wrap
+.cCenter
+	justify-content: center
+.cSpace
+	justify-content: space-around
+
+.scrollY
+	overflow-y: auto
+.scrollX
+	overflow-x: auto
+
+.listV
+	padding-left: 0
+	> *
+		display: block
+		margin-bottom: 0.2em
+.listH
+	padding-left: 0
+	display: inline-block
+	margin: 0
+	> *
+		display: inline-block
+		margin-right: 1em
+
+.hide
+	display: none
+
+.stack > *
+	position: absolute
+	> *
+		position: relative
+
+.center
+	text-align: center
+.left
+	text-align: start
+.right
+	text-align: end
+
+.framed-block
+	padding: .5em .5em
+.framed
+	padding: 0 .5em
+
+.framed, .framed-block
+	transition: all .1s ease-in-out
+	*:hover
+		box-shadow: 0 1px 6px -1px #222
+
+		box-shadow: initial
