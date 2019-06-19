@@ -1,0 +1,94 @@
+@import normalize
+@import class
+@import mixin-base
+
+// Constants
+$soft-shadow: 0 12px 60px rgba(10,10,10,.3)
+$middle-shadow: 0 6px 30px rgba(10,10,10,.3)
+$small-shadow: 0 3px 15px rgba(10,10,10,.3)
+
+/* black&white
+$bg: #fafafa // white background
+$bg2: #535353 // dark background
+$fg: #130f40
+$fg2: $bg
+$grey: #dadada // hr, input:hover
+$selection: transparentize(#b8b5d0, 0.5)
+/* purple
+	$bg: #a799ef // white background
+	$bg2: #524983 // dark background
+	$fg: #130f40
+	$fg2: #ddd6ff
+	$grey: #d9d1ff // hr, input:hover
+	$selection: transparentize(#6aaafd, 0.5) // #0361f4
+
+@import mixin
+
+// Global Style Settings
+*
+	-webkit-tap-highlight-color: transparent
+	box-sizing: border-box
+	&::selection
+		background-color: $selection
+
+html, body
+	font-family: 'Lato', 'kokoro', 'Noto Sans JP', sans-serif
+	font-weight: 300
+	background-color: $bg
+	color: $fg
+	width: 100%
+	height: 100%
+b, strong
+	font-weight: 700
+button:not(.seamless)
+	@include e-outline-button()
+button.seamless
+	@include e-seamless-button()
+input
+	@include e-input()
+hr
+	@include e-dotted-hr()
+a
+	@include e-link()
+h1,h2,h3,h4,h5,h6
+	a
+		padding: 0
+ul.selectable>li
+	@include e-selectable-li()
+h1
+	font-weight: 300
+h2
+	font-size: 1.5em
+	font-weight: 300
+h3
+	font-size: 1.2em
+	font-weight: 300
+	margin-top: 1em
+	margin-bottom: 0.5em
+code, kbd, samp, pre
+	font-family: "Inconsolata", monospace
+.grid
+	display: grid
+	&.hide
+		display: none
+
+// Styles for "CSS Style Checker" page.
+#container
+	div
+		margin: 2em auto 5em
+		padding: 1em
+		box-shadow: $soft-shadow
+		hr
+			margin: 1em 0em
+		hr.full
+			margin: 1em -1em
+			border-top-width: 1px
+			border-top-style: solid
+			opacity: 1
+	input
+		max-width: 10em
+	code
+		white-space: pre-wrap
+
+#info, #checker
+	max-width: 30em

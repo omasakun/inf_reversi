@@ -1,0 +1,49 @@
+{
+	"author": "omasakun",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"clean": "trash tmp-js tmp-css docs .sass-cache",
+		"pug": "pug src/pug/ --obj src/pug/config.json --out docs/",
+		"sass": "node-sass src/sass/index.sass --output tmp-css/ -q --indented-type --output-style expanded --source-map-embed --source-map-contents --source-map-root src/sass",
+		"css": "postcss --config postcss.json tmp-css/index.css -o docs/index.css",
+		"cssmin": "cleancss docs/index.css -o docs/index.min.css -O2",
+		"tsc": "tsc",
+		"js": "rollup --config rollup.config.js",
+		"jsmin": "google-closure-compiler --js docs/bundle.js --js_output_file docs/bundle.min.js -O WHITESPACE -W VERBOSE --language_in ECMASCRIPT_NEXT --language_out ECMASCRIPT_NEXT --assume_function_wrapper --output_wrapper '(function(){%output%})()'",
+		"copy": "cpx src/assets/**/* docs/assets/",
+		"view": "browser-sync 'docs/'",
+		"view-reload": "browser-sync reload",
+		"build:html": "run-s pug view-reload -- -w",
+		"build:css": "watch 'run-s sass css cssmin view-reload' src/sass/",
+		"build:js": "watch 'run-s js jsmin view-reload' tmp-js/",
+		"build:assets": "run-s copy view-reload -- -w",
+		"build:view": "run-s view",
+		"build": "run-p -cl build:*",
+		"build-tsc": "tsc -w",
+		"start": "run-s clean compile"
+	},
+	"devDependencies": {
+		"@types/pixi.js": "^4.8.7",
+		"autoprefixer": "^9.5.1",
+		"browser-sync": "^2.26.5",
+		"clean-css-cli": "^4.3.0",
+		"cpx": "^1.5.0",
+		"google-closure-compiler": "^20190513.0.0",
+		"jstransformer-markdown-it": "^2.1.0",
+		"node-sass": "^4.12.0",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^6.1.2",
+		"pug-cli": "^1.0.0-alpha6",
+		"rollup": "^1.12.5",
+		"rollup-plugin-commonjs": "^10.0.0",
+		"rollup-plugin-includepaths": "^0.2.3",
+		"rollup-plugin-node-resolve": "^5.0.0",
+		"rollup-plugin-sourcemaps": "^0.4.2",
+		"trash-cli": "^3.0.0",
+		"typescript": "^3.5.1"
+	},
+	"dependencies": {
+		"watch": "^1.0.2"
+	}
+}

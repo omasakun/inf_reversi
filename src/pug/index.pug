@@ -1,0 +1,43 @@
+doctype html
+html(lang="ja")
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="description" content="Reversi game with infinite board size")
+		meta(name="author" content="omasakun")
+		title Infinite Reversi
+		link(rel="stylesheet" href="./index.css")
+		link.defer-css(href="https://fonts.googleapis.com/css?family=Lato:300,700|Noto+Sans+JP:300,700|Overpass+Mono:300|Inconsolata:400&display=swap&subset=japanese" rel="stylesheet")
+		link.defer-css(href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet")
+		script(defer src="./bundle.js")
+	body
+		#container
+			#info
+				h1 Infinite Reversi (WIP)
+				:markdown-it
+					Infinite Reversi is a reversi game with infinite board size.
+
+					This game is still **work-in-progress**.
+				hr
+				a(href="https://github.com/omasakun/inf_reversi") GitHub(main)
+				a(href="https://gitlab.com/omasakun/inf_reversi") GitLab
+				
+			#checker
+				h2 CSS Style Checker
+				h3 Header 3
+				input(type="text", placeholder="input box")
+				button Button1
+				button.seamless Button2
+				hr
+				ul.selectable.listV
+					li This
+					li is 
+					li a
+					li selectable
+					li list
+					li.selected (selected item)
+					li item
+				hr.full
+				a Dummy link
+		//- script Array.from(document.querySelectorAll("link.defer-css")).forEach(e => e.rel = "stylesheet")

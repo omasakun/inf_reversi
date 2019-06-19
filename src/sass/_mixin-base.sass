@@ -1,0 +1,103 @@
+// modified for prime-shooter-2 (2019-05-22)
+// 色の指定を引数として受け取るようにしていたら、引数それぞれの意味がわかりにくくなったので、mixin呼び出し側で必要なものだけ指定する形にする。
+
+// naming convention: ee-[name]
+
+@mixin ee-link
+	transition: 0.1s all
+	// color: $fg
+	padding: 0 0.7em
+	display: inline-block
+	border-radius: 0.2em
+	text-decoration: none
+	cursor: pointer
+	&::before, &::after
+		content: ''
+		display: block
+		width: 100%
+		// background: $bg-sel
+		transition: all .1s ease-in-out
+
+	&::before
+		position: relative
+		opacity: 0.4
+		top: 1.2em
+		height: 1px
+	&::after
+		margin-left: 50%
+		width: 0
+		height: 2px
+	&:hover::after
+		margin-left: 0
+		width: 100%
+	&:active
+		// color: $fg-sel
+		&::after
+			height: calc(1em + 4px)
+			width: calc(100% + 4px)
+			margin-left: -2px
+			margin-top: calc(-1em - 2px)
+
+@mixin ee-input
+	transition: 0.1s all
+	display: inline-block
+	// background: $bg
+	outline: none
+	border: none
+	border-top: 1px solid transparent
+	border-bottom-width: 1px
+	border-bottom-style: solid
+	// border-bottom-color: $border
+	margin: 0 0.5em
+	padding: 0em 0.7em
+	height: 1.15em + 0.3em * 2 // line-height + margins
+	color: inherit
+	&:hover
+		// background-color: $bg-hover
+		border-bottom-color: transparent
+		// color: $fg-hover
+	&::selection
+		// background-color: $bg-sel
+		// color: $fg-sel
+
+@mixin ee-outline-button
+	transition: 0.1s all
+	display: inline-block
+	border-width:: 1px
+	border-style: solid
+	// border-color: $border
+	// background-color: $bg
+	// color: $fg
+	border-radius: 4px
+	outline: none
+	cursor: pointer
+	padding: 0.3em 0.7em
+	margin: 0.2em 0.2em
+	user-select: none
+	&:hover
+		// background-color: $bg-hover
+		// border-color: $bg-hover
+		// color: $fg-hover
+	&:active
+		// color: $fg-active
+
+@mixin ee-dotted-hr
+	border: none
+	height: 0
+	border-top-width: 2px
+	border-top-style: dotted
+	// border-top-color: $border
+	margin: 0
+
+@mixin ee-selectable-li
+	transition: all 0.1s
+	cursor: pointer
+	padding: 0.1em 0
+	user-select: none
+	&.selected
+		// background-color: $bg-selected
+		// color: $fg-selected
+	&:hover
+		padding-left: 1em
+	&:active
+		// color: $fg-active
