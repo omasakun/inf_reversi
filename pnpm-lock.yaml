@@ -1,7 +1,7 @@
 devDependencies:
-  '@types/pixi.js': 4.8.8
   autoprefixer: 9.6.0
   browser-sync: 2.26.7
+  chokidar-cli: 1.2.2
   clean-css-cli: 4.3.0
   cpx: 1.5.0
   google-closure-compiler: 20190513.0.0
@@ -11,14 +11,13 @@ devDependencies:
   postcss-cli: 6.1.2
   pug-cli: 1.0.0-alpha6
   rollup: 1.15.6
-  rollup-plugin-commonjs: 10.0.0
+  rollup-plugin-commonjs: 10.0.0_rollup@1.15.6
   rollup-plugin-includepaths: 0.2.3
-  rollup-plugin-node-resolve: 5.0.3
-  rollup-plugin-sourcemaps: 0.4.2
+  rollup-plugin-node-resolve: 5.0.3_rollup@1.15.6
+  rollup-plugin-sourcemaps: 0.4.2_rollup@1.15.6
   trash-cli: 3.0.0
   typescript: 3.5.2
-  watch: 1.0.2
-lockfileVersion: 5
+lockfileVersion: 5.1
 packages:
   /@mrmlnc/readdir-enhanced/2.2.1:
     dependencies:
@@ -97,10 +96,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-b8bbUOTwzIY3V5vDTY1fIJ+ePKDUBqt2hC2woVGotdQQhG/2Sh62HOKHrT7ab+VerXAcPyAiTEipPu/FsreUtg==
-  /@types/pixi.js/4.8.8:
-    dev: true
-    resolution:
-      integrity: sha512-5wmLnmL3foK/rqYMrrEM/3DxEwvwxJaP73RyqY8aMqq8zUm6CBlmc+12RIBH6iR/RHqU76XL238vWWJV1IN/zw==
   /@types/resolve/0.0.8:
     dependencies:
       '@types/node': 12.0.8
@@ -487,12 +482,16 @@ packages:
       integrity: sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
   /block-stream/0.0.9:
     dependencies:
-      inherits: 2.0.3
+      inherits: 2.0.4
     dev: true
     engines:
       node: 0.4 || >=0.5.8
     resolution:
       integrity: sha1-E+v+d4oDIFz+A3UUgeu0szAMEmo=
+  /bluebird/3.5.3:
+    dev: true
+    resolution:
+      integrity: sha512-/qKPUQlaW1OyR51WeCPBvRnAlnZFUJkCSG5HzGnuIqhgyJtF+T94lFnn33eiazjRm2LAHVy2guNnaq48X9SJuw==
   /boxen/3.2.0:
     dependencies:
       ansi-align: 3.0.0
@@ -605,7 +604,7 @@ packages:
   /browserslist/4.6.3:
     dependencies:
       caniuse-lite: 1.0.30000975
-      electron-to-chromium: 1.3.165
+      electron-to-chromium: 1.3.166
       node-releases: 1.1.23
     dev: true
     hasBin: true
@@ -769,12 +768,22 @@ packages:
     dev: true
     resolution:
       integrity: sha1-x84o821LzZdE5f/CxfzeHHMmH8A=
+  /chokidar-cli/1.2.2:
+    dependencies:
+      bluebird: 3.5.3
+      chokidar: 2.1.1
+      lodash: 4.17.11
+      yargs: 12.0.5
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-Yx0OYKcAkS7YMPP3/co6aN+1AOx2L6WmscqWvnqs7z+9AhDsn4zpezaErNoPACri1iUVjtxk8E77sMGntkBh3Q==
   /chokidar/1.7.0:
     dependencies:
       anymatch: 1.3.2
       async-each: 1.0.3
       glob-parent: 2.0.0
-      inherits: 2.0.3
+      inherits: 2.0.4
       is-binary-path: 1.0.1
       is-glob: 2.0.1
       path-is-absolute: 1.0.1
@@ -784,13 +793,31 @@ packages:
       fsevents: 1.2.9
     resolution:
       integrity: sha1-eY5ol3gVHIB2tLNg5e3SjNortGg=
+  /chokidar/2.1.1:
+    dependencies:
+      anymatch: 2.0.0
+      async-each: 1.0.3
+      braces: 2.3.2
+      glob-parent: 3.1.0
+      inherits: 2.0.4
+      is-binary-path: 1.0.1
+      is-glob: 4.0.1
+      normalize-path: 3.0.0
+      path-is-absolute: 1.0.1
+      readdirp: 2.2.1
+      upath: 1.1.2
+    dev: true
+    optionalDependencies:
+      fsevents: 1.2.9
+    resolution:
+      integrity: sha512-gfw3p2oQV2wEt+8VuMlNsPjCxDxvvgnm/kz+uATu805mWVF8IJN7uz9DN7iBz+RMJISmiVbCOBFs9qBGMjtPfQ==
   /chokidar/2.1.6:
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.3
       braces: 2.3.2
       glob-parent: 3.1.0
-      inherits: 2.0.3
+      inherits: 2.0.4
       is-binary-path: 1.0.1
       is-glob: 4.0.1
       normalize-path: 3.0.0
@@ -890,8 +917,8 @@ packages:
       integrity: sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
   /cloneable-readable/1.1.3:
     dependencies:
-      inherits: 2.0.3
-      process-nextick-args: 2.0.0
+      inherits: 2.0.4
+      process-nextick-args: 2.0.1
       readable-stream: 2.3.6
     dev: true
     resolution:
@@ -1283,10 +1310,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.3.165:
+  /electron-to-chromium/1.3.166:
     dev: true
     resolution:
-      integrity: sha512-iIS8axR524EAnvUtWUNnREnYjQrS0zUvutIKYgTVuN3MzcjrV31EuJYKw7DGOtFO9DQw+JiXeaVDPQWMskG1wQ==
+      integrity: sha512-7XwtJz81H/PBnkmQ/07oVPOGTkBZs6ibZN8OqXNUrxjRPzR0Xj+MFcMmRZEXGilEg1Pm+97V8BZVI63qnBX1hQ==
   /emoji-regex/7.0.3:
     dev: true
     resolution:
@@ -1426,12 +1453,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-HIaZHYFq0eUEdQ5zh0Ik7PO+xQg=
-  /exec-sh/0.2.2:
-    dependencies:
-      merge: 1.2.1
-    dev: true
-    resolution:
-      integrity: sha512-FIUCJz1RbuS0FKTdaAafAByGS0CPvU3R0MeHxgtl+djzCc//F8HakL8GzmVNZanasTbTAY/3DRFA0KpVqj/eAw==
   /execa/0.2.2:
     dependencies:
       cross-spawn-async: 2.2.5
@@ -1730,7 +1751,7 @@ packages:
   /fstream/1.0.12:
     dependencies:
       graceful-fs: 4.1.15
-      inherits: 2.0.3
+      inherits: 2.0.4
       mkdirp: 0.5.1
       rimraf: 2.6.3
     dev: true
@@ -1843,7 +1864,7 @@ packages:
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
-      inherits: 2.0.3
+      inherits: 2.0.4
       minimatch: 3.0.4
       once: 1.4.0
       path-is-absolute: 1.0.1
@@ -2199,6 +2220,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
+  /inherits/2.0.4:
+    dev: true
+    resolution:
+      integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
   /ini/1.3.5:
     dev: true
     resolution:
@@ -2941,10 +2966,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-cstmi0JSKCkKu/qFaJJYcwioAfs=
-  /merge/1.2.1:
-    dev: true
-    resolution:
-      integrity: sha512-VjFo4P5Whtj4vsLzsYBu5ayHhoHJ0UqNm7ibvShmbmoz7tGi0vXaoJbGdB+GmDMLUdg8DpQXEIeVDAe8MaABvQ==
   /merge2/1.2.3:
     dev: true
     engines:
@@ -3044,6 +3065,7 @@ packages:
     dependencies:
       for-in: 1.0.2
       is-extendable: 1.0.1
+    deprecated: 'Critical bug fixed in v2.0.1, please upgrade to the latest version.'
     dev: true
     engines:
       node: '>=0.10.0'
@@ -3698,10 +3720,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
-  /process-nextick-args/2.0.0:
+  /process-nextick-args/2.0.1:
     dev: true
     resolution:
-      integrity: sha512-MtEC1TqN0EU5nephaJ4rAtThHtC86dNN9qCuEhtshvpVBkAW5ZO7BASN9REnF9eoXGcRub+pFuKEpOHE+HbEMw==
+      integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
   /promise/7.3.1:
     dependencies:
       asap: 2.0.6
@@ -3712,10 +3734,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
-  /psl/1.1.32:
+  /psl/1.1.33:
     dev: true
     resolution:
-      integrity: sha512-MHACAkHpihU/REGGPLj4sEfc/XKW2bheigvHO1dUqjaKigMp1C8+WLQYRGgeKFMsw5PMfegZcaN8IDXK/cD0+g==
+      integrity: sha512-LTDP2uSrsc7XCb5lO7A8BI1qYxRe/8EqlRvMeEl6rsnYAqDOl8xHR+8lSAIVfrNaSAlTPTNOCgNjWcoUL3AZsw==
   /pug-attrs/2.0.4:
     dependencies:
       constantinople: 3.1.2
@@ -3923,9 +3945,9 @@ packages:
   /readable-stream/2.3.6:
     dependencies:
       core-util-is: 1.0.2
-      inherits: 2.0.3
+      inherits: 2.0.4
       isarray: 1.0.0
-      process-nextick-args: 2.0.0
+      process-nextick-args: 2.0.1
       safe-buffer: 5.1.2
       string_decoder: 1.1.1
       util-deprecate: 1.0.2
@@ -4110,12 +4132,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
-  /rollup-plugin-commonjs/10.0.0:
+  /rollup-plugin-commonjs/10.0.0_rollup@1.15.6:
     dependencies:
       estree-walker: 0.6.1
       is-reference: 1.1.2
       magic-string: 0.25.2
       resolve: 1.11.0
+      rollup: 1.15.6
       rollup-pluginutils: 2.8.1
     dev: true
     peerDependencies:
@@ -4126,20 +4149,22 @@ packages:
     dev: true
     resolution:
       integrity: sha512-4QbSIZPDT+FL4SViEVCRi4cGCA64zQJu7u5qmCkO3ecHy+l9EQBsue15KfCpddfb6Br0q47V/v2+E2YUiqts9g==
-  /rollup-plugin-node-resolve/5.0.3:
+  /rollup-plugin-node-resolve/5.0.3_rollup@1.15.6:
     dependencies:
       '@types/resolve': 0.0.8
       builtin-modules: 3.1.0
       is-module: 1.0.0
       resolve: 1.11.0
+      rollup: 1.15.6
       rollup-pluginutils: 2.8.1
     dev: true
     peerDependencies:
       rollup: '>=1.11.0'
     resolution:
       integrity: sha512-Mhhmf0x493xgUPEsRELnU1VM+4+WO82knWkAbZ0d2DvZQZJMbhzyQK/hqtpVscoRru1EqlK3TM1kK9ro469wPw==
-  /rollup-plugin-sourcemaps/0.4.2:
+  /rollup-plugin-sourcemaps/0.4.2_rollup@1.15.6:
     dependencies:
+      rollup: 1.15.6
       rollup-pluginutils: 2.8.1
       source-map-resolve: 0.5.2
     dev: true
@@ -4290,6 +4315,7 @@ packages:
       is-extendable: 0.1.1
       is-plain-object: 2.0.4
       to-object-path: 0.3.0
+    deprecated: 'Critical bug fixed in v3.0.1, please upgrade to the latest version.'
     dev: true
     engines:
       node: '>=0.10.0'
@@ -4301,6 +4327,7 @@ packages:
       is-extendable: 0.1.1
       is-plain-object: 2.0.4
       split-string: 3.1.0
+    deprecated: 'Critical bug fixed in v3.0.1, please upgrade to the latest version.'
     dev: true
     engines:
       node: '>=0.10.0'
@@ -4729,7 +4756,7 @@ packages:
     dependencies:
       block-stream: 0.0.9
       fstream: 1.0.12
-      inherits: 2.0.3
+      inherits: 2.0.4
     dev: true
     resolution:
       integrity: sha512-FCEhQ/4rE1zYv9rYXJw/msRqsnmlje5jHP6huWeBZ704jUTy02c5AZyWujpMR1ax6mVw9NyJMfuK2CMDWVIfgA==
@@ -4804,7 +4831,7 @@ packages:
       integrity: sha1-zu78cXp2xDFvEm0LnbqlXX598Bo=
   /tough-cookie/2.4.3:
     dependencies:
-      psl: 1.1.32
+      psl: 1.1.33
       punycode: 1.4.1
     dev: true
     engines:
@@ -5055,16 +5082,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
-  /watch/1.0.2:
-    dependencies:
-      exec-sh: 0.2.2
-      minimist: 1.2.0
-    dev: true
-    engines:
-      node: '>=0.1.95'
-    hasBin: true
-    resolution:
-      integrity: sha1-NApxe952Vyb6CqB9ch4BR6VR3ww=
   /which-module/1.0.0:
     dev: true
     resolution:
@@ -5304,9 +5321,9 @@ packages:
     resolution:
       integrity: sha1-AI4G2AlDIMNy28L47XagymyKxBk=
 specifiers:
-  '@types/pixi.js': ^4.8.7
   autoprefixer: ^9.5.1
-  browser-sync: ^2.26.5
+  browser-sync: ^2.26.7
+  chokidar-cli: ^1.2.2
   clean-css-cli: ^4.3.0
   cpx: ^1.5.0
   google-closure-compiler: ^20190513.0.0
@@ -5322,4 +5339,3 @@ specifiers:
   rollup-plugin-sourcemaps: ^0.4.2
   trash-cli: ^3.0.0
   typescript: ^3.5.1
-  watch: ^1.0.2
