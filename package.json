@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"clean": "trash tmp-js tmp-css docs .sass-cache",
-		"pug": "pug src/pug/ --obj src/pug/config.json --out docs/",
+		"pug": "pug src/pug/ --obj src/pug/config.json --out docs/ -s",
 		"sass": "node-sass src/sass/index.sass --output tmp-css/ -q --indented-type --output-style expanded --source-map-embed --source-map-contents --source-map-root src/sass",
 		"css": "postcss --config postcss.json tmp-css/index.css -o docs/index.css",
 		"cssmin": "cleancss docs/index.css -o docs/index.min.css -O2",
@@ -12,21 +12,20 @@
 		"js": "rollup --config rollup.config.js",
 		"jsmin": "google-closure-compiler --js docs/bundle.js --js_output_file docs/bundle.min.js -O WHITESPACE -W VERBOSE --language_in ECMASCRIPT_NEXT --language_out ECMASCRIPT_NEXT --assume_function_wrapper --output_wrapper '(function(){%output%})()'",
 		"copy": "cpx src/assets/**/* docs/",
-		"view": "browser-sync 'docs/'",
+		"view": "browser-sync 'docs/' --no-notify --logLevel info",
 		"view-reload": "browser-sync reload",
-		"build:html": "watch 'run-s pug view-reload' src/pug/ --wait=1",
-		"build:css": "watch 'run-s sass css cssmin view-reload' src/sass/ --wait=1",
-		"build:js": "watch 'run-s js jsmin view-reload' tmp-js/ --wait=1",
-		"build:assets": "watch 'run-s copy view-reload' src/assets/ --wait=1",
-		"build:view": "run-s view",
-		"build": "run-p -cl build:*",
-		"build-tsc": "tsc -w",
-		"start": "run-s clean compile"
+		"build:html": "chokidar src/pug/ --debounce 200 --silent --initial -c 'run-s pug view-reload'",
+		"build:css": "chokidar src/sass/ --debounce 200 --silent --initial -c 'run-s sass css cssmin view-reload'",
+		"build:js": "chokidar tmp-js/ --debounce 200 --silent --initial -c 'run-s js jsmin view-reload'",
+		"build:assets": "chokidar src/assets/ --debounce 200 --silent --initial -c 'run-s copy view-reload'",
+		"build:view": "run-s -s view",
+		"build": "run-p -cls build:*",
+		"build-tsc": "tsc -w"
 	},
 	"devDependencies": {
-		"@types/pixi.js": "^4.8.7",
 		"autoprefixer": "^9.5.1",
-		"browser-sync": "^2.26.5",
+		"browser-sync": "^2.26.7",
+		"chokidar-cli": "^1.2.2",
 		"clean-css-cli": "^4.3.0",
 		"cpx": "^1.5.0",
 		"google-closure-compiler": "^20190513.0.0",
@@ -41,7 +40,6 @@
 		"rollup-plugin-node-resolve": "^5.0.0",
 		"rollup-plugin-sourcemaps": "^0.4.2",
 		"trash-cli": "^3.0.0",
-		"typescript": "^3.5.1",
-		"watch": "^1.0.2"
+		"typescript": "^3.5.1"
 	}
 }
