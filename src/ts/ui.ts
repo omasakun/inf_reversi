@@ -9,16 +9,13 @@ class UI_Info {
 	private container = ge("info");
 	private playBtn = ge("i-play");
 	private onlineBtn = ge("i-start_online");
-	private joinBtn = ge("i-join_online");
 
 	onPlayClicked = () => { };
 	onOnlineClicked = () => { };
-	onJoinClicked = () => { };
 
 	constructor() {
 		onClick(this.playBtn, () => this.onPlayClicked());
 		onClick(this.onlineBtn, () => this.onOnlineClicked());
-		onClick(this.joinBtn, () => this.onJoinClicked());
 	}
 
 	show() {
@@ -68,10 +65,8 @@ class UI_Menu {
 	private isOnline: "yes" | "no" | "?" = "?";
 
 	onPlayClicked = (turnCount: number, isOnline: boolean) => { };
-	onJoinClicked = () => { };
 
 	constructor() {
-		this.info.onJoinClicked = () => this.onJoinClicked();
 		this.info.onOnlineClicked = () => {
 			this.isOnline = "yes";
 			this.info.hide();
@@ -105,6 +100,7 @@ class UI_Game {
 	private zoomInBtn = ge<HTMLButtonElement>("g-zoom_in");
 	private zoomOutBtn = ge<HTMLButtonElement>("g-zoom_out");
 	private putBtn = ge<HTMLButtonElement>("g-put");
+	private fullscreenBtn = ge<HTMLButtonElement>("g-fullscreen");
 	private log = ge<HTMLUListElement>("g-log");
 	private shortMsg = ge("g-short_message");
 	private message = ge("g-message");
@@ -115,11 +111,13 @@ class UI_Game {
 	onZoomInClicked = () => { };
 	onZoomOutClicked = () => { };
 	onPutClicked = () => { };
+	onFullscreenClicked = () => { };
 
 	constructor() {
 		onClick(this.zoomInBtn, () => this.onZoomInClicked());
 		onClick(this.zoomOutBtn, () => this.onZoomOutClicked());
 		onClick(this.putBtn, () => this.onPutClicked());
+		onClick(this.fullscreenBtn, () => this.onFullscreenClicked());
 	}
 	show() {
 		this.container.classList.remove("hide");
@@ -145,17 +143,17 @@ export class UI {
 	private game = new UI_Game();
 
 	onPlayClicked = (turnCount: number, isOnline: boolean) => { };
-	onJoinClicked = () => { };
 	onZoomInClicked = () => { };
 	onZoomOutClicked = () => { };
 	onPutClicked = () => { };
+	onFullscreenClicked = () => { };
 
 	constructor() {
 		this.menu.onPlayClicked = (turnCount, isOnline) => this.onPlayClicked(turnCount, isOnline);
-		this.menu.onJoinClicked = () => this.onJoinClicked();
 		this.game.onZoomInClicked = () => this.onZoomInClicked();
 		this.game.onZoomOutClicked = () => this.onZoomOutClicked();
 		this.game.onPutClicked = () => this.onPutClicked();
+		this.game.onFullscreenClicked = () => this.onFullscreenClicked();
 	}
 
 	showMenu() {

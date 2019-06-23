@@ -203,6 +203,7 @@ export class DrawableReversiBoard extends ReversiBoard {
 	private originPixel: [number, number] = [0, 0]; // 盤面の[0,0]がどこの座標に描画されるべきかを示す。[0,0]ならば、canvasの中央から[0,0]平行移動した位置に描画する。
 	private selected: undefined | [number, number] = undefined;
 	private playerPiece: Piece | undefined = undefined;
+	maxTurnCount: number | undefined = undefined;
 
 	onCellClicked = (x: number, y: number) => { };
 
@@ -253,6 +254,11 @@ export class DrawableReversiBoard extends ReversiBoard {
 		return this.cellSize;
 	}
 	setCellSize(pixels: number): void {
+		const factor = pixels / this.cellSize;
+		this.originPixel = [
+			this.originPixel[0] * factor,
+			this.originPixel[1] * factor,
+		]
 		this.cellSize = pixels;
 		this.render();
 	}
