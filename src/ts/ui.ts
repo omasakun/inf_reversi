@@ -1,5 +1,5 @@
-import { ge, onClick, ce } from "./dom-util";
-import { ResponsiveCanvas } from "./responsive-canvas";
+import { ge, onClick, ce, cLI } from "./dom-util";
+import { MyCanvas } from "./mycanvas";
 
 const pref = {
 	defaultTurnCount: 64,
@@ -105,12 +105,12 @@ class UI_Game {
 	private zoomInBtn = ge<HTMLButtonElement>("g-zoom_in");
 	private zoomOutBtn = ge<HTMLButtonElement>("g-zoom_out");
 	private putBtn = ge<HTMLButtonElement>("g-put");
-	private log = ge<HTMLUListElement>("log");
+	private log = ge<HTMLUListElement>("g-log");
 	private shortMsg = ge("g-short_message");
 	private message = ge("g-message");
 	private canvasContainer = ge<HTMLCanvasElement>("g-canvas_parent");
 	private canvasElem = ge<HTMLCanvasElement>("g-canvas");
-	canvas = new ResponsiveCanvas(this.canvasContainer, this.canvasElem);
+	canvas = new MyCanvas(this.canvasContainer, this.canvasElem);
 
 	onZoomInClicked = () => { };
 	onZoomOutClicked = () => { };
@@ -130,8 +130,8 @@ class UI_Game {
 	clearLog() {
 		this.log.innerHTML = "";
 	}
-	addLog(elem: HTMLElement[]) {
-		this.log.appendChild(ce("li", [], elem));
+	addLog(msg: string) {
+		this.log.appendChild(cLI(msg, []));
 	}
 	setShortMsg(msg: string) {
 		this.shortMsg.textContent = msg;
@@ -146,10 +146,16 @@ export class UI {
 
 	onPlayClicked = (turnCount: number, isOnline: boolean) => { };
 	onJoinClicked = () => { };
+	onZoomInClicked = () => { };
+	onZoomOutClicked = () => { };
+	onPutClicked = () => { };
 
 	constructor() {
 		this.menu.onPlayClicked = (turnCount, isOnline) => this.onPlayClicked(turnCount, isOnline);
 		this.menu.onJoinClicked = () => this.onJoinClicked();
+		this.game.onZoomInClicked = () => this.onZoomInClicked();
+		this.game.onZoomOutClicked = () => this.onZoomOutClicked();
+		this.game.onPutClicked = () => this.onPutClicked();
 	}
 
 	showMenu() {
@@ -163,13 +169,16 @@ export class UI {
 	clearLog() {
 		this.game.clearLog();
 	}
-	addLog(elem: HTMLElement[]) {
-		this.game.addLog(elem);
+	addLog(msg: string) {
+		this.game.addLog(msg);
 	}
 	setShortMsg(msg: string) {
 		this.game.setShortMsg(msg);
 	}
 	setMsg(msg: string) {
 		this.game.setMsg(msg);
+	}
+	getCanvas() {
+		return this.game.canvas;
 	}
 }

@@ -28,8 +28,8 @@
 
 1. `pnpm install` or `npm install` : Install necessary npm packages
 2. `npm run clean` : Delete unnecessary files.
-3. `npm run tsc` : Compile TypeScript
-4. `npm run dev` : Compile Sass/Pug & Bundle JavaScript & Launch live server
+3. `npm run build-tsc` : Compile TypeScript
+4. `npm run build` : Compile Sass/Pug & Bundle JavaScript & Launch live server
 
 ## License
 

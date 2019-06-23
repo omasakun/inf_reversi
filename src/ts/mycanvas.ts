@@ -1,9 +1,9 @@
-export class ResponsiveCanvas {
+export class MyCanvas {
 	parent: HTMLElement
 	canvas: HTMLCanvasElement
 	ctx: CanvasRenderingContext2D
-	scaleX: number
-	scaleY: number
+	width: number
+	height: number
 	// aspect: number
 	dpr: number
 	constructor(
@@ -16,8 +16,8 @@ export class ResponsiveCanvas {
 		this.canvas = canvas;
 		if (canvas.getContext) this.ctx = canvas.getContext('2d')!;
 		else throw "Canvasが対応していないようです";
-		this.scaleX = 1;
-		this.scaleY = 1;
+		this.width = 1;
+		this.height = 1;
 		this.dpr = (dpr || window.devicePixelRatio || 1);
 		// this.aspect = aspect;
 		var self = this;
@@ -45,58 +45,62 @@ export class ResponsiveCanvas {
 		const scaleX = scale * this.aspect;
 		const scaleY = scale;
 		/*/
-		const scaleX = maxWidth;
-		const scaleY = maxHeight;
+		const width = maxWidth;
+		const height = maxHeight;
 		//*/
-		this.scaleX = this.dpr * scaleX;
-		this.scaleY = this.dpr * scaleY;
-		canvas.width = this.scaleX;
-		canvas.height = this.scaleY;
-		canvas.style.width = scaleX + "px";
-		canvas.style.height = scaleY + "px";
+		this.width = this.dpr * width;
+		this.height = this.dpr * height;
+		canvas.width = this.width;
+		canvas.height = this.height;
+		canvas.style.width = width + "px";
+		canvas.style.height = height + "px";
 		this.ctx.lineWidth = this.dpr;
 	}
 	line(x1: number, y1: number, x2: number, y2: number) {
-		this.ctx.moveTo((x1 * this.scaleX), (y1 * this.scaleY));
-		this.ctx.lineTo((x2 * this.scaleX), (y2 * this.scaleY));
+		const scaleX = 1, scaleY = 1;
+		this.ctx.moveTo((x1 * scaleX), (y1 * scaleY));
+		this.ctx.lineTo((x2 * scaleX), (y2 * scaleY));
 	}
 	rect(x: number, y: number, w: number, h: number) {
+		const scaleX = 1, scaleY = 1;
 		this.ctx.rect(
-			(x * this.scaleX), (y * this.scaleY),
-			(w * this.scaleX), (h * this.scaleY)
+			(x * scaleX), (y * scaleY),
+			(w * scaleX), (h * scaleY)
 		);
 	}
 	round(x: number, y: number, r: number) {
+		const scaleX = 1, scaleY = 1;
 		this.ctx.arc(
-			(x * this.scaleX),
-			(y * this.scaleY),
-			(r * Math.min(this.scaleX, this.scaleY)),
+			(x * scaleX),
+			(y * scaleY),
+			(r * Math.min(scaleX, scaleY)),
 			-0.5 * Math.PI,
 			2 * Math.PI
 		);
 	}
 	longRound(x: number, y: number, h: number, r: number) {
+		const scaleX = 1, scaleY = 1;
 		this.ctx.arc(
-			(x * this.scaleX),
-			(y * this.scaleY),
-			(r * Math.min(this.scaleX, this.scaleY)),
+			(x * scaleX),
+			(y * scaleY),
+			(r * Math.min(scaleX, scaleY)),
 			-Math.PI, 0
 		);
 		this.ctx.arc(
-			(x * this.scaleX),
-			((y + h) * this.scaleY),
-			(r * Math.min(this.scaleX, this.scaleY)),
+			(x * scaleX),
+			((y + h) * scaleY),
+			(r * Math.min(scaleX, scaleY)),
 			0, -Math.PI
 		);
 		this.ctx.lineTo(
-			(x * this.scaleX - r * Math.min(this.scaleX, this.scaleY)),
-			(y * this.scaleY)
+			(x * scaleX - r * Math.min(scaleX, scaleY)),
+			(y * scaleY)
 		);
 	}
 	beginPath() { this.ctx.beginPath() }
 	fillAll(style: undefined | string = undefined) {
 		if (style !== undefined) this.ctx.fillStyle = style;
-		this.ctx.fillRect(0, 0, this.scaleX, this.scaleY);
+		this.ctx.fillRect(0, 0, this.width, this.height);
 	}
 	fill(style: undefined | string = undefined) {
 		if (style !== undefined) this.ctx.fillStyle = style;
@@ -107,6 +111,7 @@ export class ResponsiveCanvas {
 		this.ctx.stroke();
 	}
 	clearAll() {
-		this.ctx.clearRect(0, 0, this.scaleX, this.scaleY);
+		const scaleX = 1, scaleY = 1;
+		this.ctx.clearRect(0, 0, this.width, this.height);
 	}
 }
