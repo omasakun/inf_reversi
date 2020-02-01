@@ -2,6 +2,8 @@
 
 [Infinite Reversi](https://github.com/omasakun/inf_reversi) is a reversi game with infinite board size.
 
+(Multi-player mode is not implemented)
+
 <p align="center">
 	<a href="https://omasakun.github.io/inf_reversi"><b>Play Now!</b></a>
 </p>
